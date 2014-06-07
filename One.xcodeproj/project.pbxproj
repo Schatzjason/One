@@ -22,6 +22,8 @@
 		4DEDC02D1943959B00C994E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC00C1943959B00C994E2 /* UIKit.framework */; };
 		4DEDC0351943959B00C994E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0331943959B00C994E2 /* InfoPlist.strings */; };
 		4DEDC0371943959B00C994E2 /* OneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0361943959B00C994E2 /* OneTests.m */; };
+		4DEDC0421943BAAC00C994E2 /* ONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0411943BAAC00C994E2 /* ONModel.m */; };
+		4DEDC0431943BAAC00C994E2 /* ONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0411943BAAC00C994E2 /* ONModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		4DEDC0321943959B00C994E2 /* OneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneTests-Info.plist"; sourceTree = "<group>"; };
 		4DEDC0341943959B00C994E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DEDC0361943959B00C994E2 /* OneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneTests.m; sourceTree = "<group>"; };
+		4DEDC0401943BAAC00C994E2 /* ONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONModel.h; sourceTree = "<group>"; };
+		4DEDC0411943BAAC00C994E2 /* ONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 				4DEDC0211943959B00C994E2 /* ONViewController.m */,
 				4DEDC0231943959B00C994E2 /* Images.xcassets */,
 				4DEDC00F1943959B00C994E2 /* Supporting Files */,
+				4DEDC0401943BAAC00C994E2 /* ONModel.h */,
+				4DEDC0411943BAAC00C994E2 /* ONModel.m */,
 			);
 			path = One;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 			files = (
 				4DEDC0151943959B00C994E2 /* main.m in Sources */,
 				4DEDC0191943959B00C994E2 /* ONAppDelegate.m in Sources */,
+				4DEDC0421943BAAC00C994E2 /* ONModel.m in Sources */,
 				4DEDC0221943959B00C994E2 /* ONViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDC0431943BAAC00C994E2 /* ONModel.m in Sources */,
 				4DEDC0371943959B00C994E2 /* OneTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
