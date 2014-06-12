@@ -15,15 +15,42 @@
 		4DEDC0191943959B00C994E2 /* ONAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0181943959B00C994E2 /* ONAppDelegate.m */; };
 		4DEDC01C1943959B00C994E2 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC01A1943959B00C994E2 /* Main_iPhone.storyboard */; };
 		4DEDC01F1943959B00C994E2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC01D1943959B00C994E2 /* Main_iPad.storyboard */; };
-		4DEDC0221943959B00C994E2 /* ONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0211943959B00C994E2 /* ONViewController.m */; };
 		4DEDC0241943959B00C994E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0231943959B00C994E2 /* Images.xcassets */; };
 		4DEDC02B1943959B00C994E2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC02A1943959B00C994E2 /* XCTest.framework */; };
 		4DEDC02C1943959B00C994E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC0081943959A00C994E2 /* Foundation.framework */; };
 		4DEDC02D1943959B00C994E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC00C1943959B00C994E2 /* UIKit.framework */; };
 		4DEDC0351943959B00C994E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0331943959B00C994E2 /* InfoPlist.strings */; };
-		4DEDC0371943959B00C994E2 /* OneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0361943959B00C994E2 /* OneTests.m */; };
+		4DEDC0371943959B00C994E2 /* OneModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0361943959B00C994E2 /* OneModelTests.m */; };
 		4DEDC0421943BAAC00C994E2 /* ONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0411943BAAC00C994E2 /* ONModel.m */; };
 		4DEDC0431943BAAC00C994E2 /* ONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0411943BAAC00C994E2 /* ONModel.m */; };
+		4DEDC0461946220900C994E2 /* ONLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0451946220900C994E2 /* ONLayoutViewController.m */; };
+		4DEDC0471946220900C994E2 /* ONLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0451946220900C994E2 /* ONLayoutViewController.m */; };
+		4DEDC04A1946224500C994E2 /* ONWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */; };
+		4DEDC04B1946224500C994E2 /* ONWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */; };
+		4DEDC04F19463D8200C994E2 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC04E19463D8200C994E2 /* UIColor+AppColors.m */; };
+		4DEDC05019463D8200C994E2 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC04E19463D8200C994E2 /* UIColor+AppColors.m */; };
+		4DEDC0531948AD3800C994E2 /* ONNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0521948AD3800C994E2 /* ONNotificationsViewController.m */; };
+		4DEDC0541948AD3800C994E2 /* ONNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0521948AD3800C994E2 /* ONNotificationsViewController.m */; };
+		4DEDC0571948AD6C00C994E2 /* ONRetakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0561948AD6C00C994E2 /* ONRetakeViewController.m */; };
+		4DEDC0581948AD6C00C994E2 /* ONRetakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0561948AD6C00C994E2 /* ONRetakeViewController.m */; };
+		4DEDC05B1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */; };
+		4DEDC05C1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */; };
+		4DEDC05F1948B16000C994E2 /* ONRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */; };
+		4DEDC0601948B16000C994E2 /* ONRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */; };
+		4DEDC0631948B24400C994E2 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0611948B24400C994E2 /* icon-40.png */; };
+		4DEDC0641948B24400C994E2 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0611948B24400C994E2 /* icon-40.png */; };
+		4DEDC0651948B24400C994E2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0621948B24400C994E2 /* icon-72.png */; };
+		4DEDC0661948B24400C994E2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0621948B24400C994E2 /* icon-72.png */; };
+		4DEDC0681948B65500C994E2 /* clear-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0671948B65500C994E2 /* clear-72.png */; };
+		4DEDC0691948B65500C994E2 /* clear-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0671948B65500C994E2 /* clear-72.png */; };
+		4DEDC06B1948BAEC00C994E2 /* clear-white-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */; };
+		4DEDC06C1948BAEC00C994E2 /* clear-white-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */; };
+		4DEDC06E1948C25F00C994E2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC06D1948C25F00C994E2 /* AddressBookUI.framework */; };
+		4DEDC0701948C26600C994E2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC06F1948C26600C994E2 /* AddressBook.framework */; };
+		4DEDC0731948D54100C994E2 /* ONBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0721948D54100C994E2 /* ONBackgroundViewController.m */; };
+		4DEDC0741948D54100C994E2 /* ONBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC0721948D54100C994E2 /* ONBackgroundViewController.m */; };
+		4DEDC076194912B400C994E2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC075194912B400C994E2 /* MobileCoreServices.framework */; };
+		4DEDC078194917CC00C994E2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC077194917CC00C994E2 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,16 +76,38 @@
 		4DEDC0181943959B00C994E2 /* ONAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ONAppDelegate.m; sourceTree = "<group>"; };
 		4DEDC01B1943959B00C994E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		4DEDC01E1943959B00C994E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		4DEDC0201943959B00C994E2 /* ONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ONViewController.h; sourceTree = "<group>"; };
-		4DEDC0211943959B00C994E2 /* ONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ONViewController.m; sourceTree = "<group>"; };
 		4DEDC0231943959B00C994E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4DEDC0291943959B00C994E2 /* OneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DEDC02A1943959B00C994E2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4DEDC0321943959B00C994E2 /* OneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneTests-Info.plist"; sourceTree = "<group>"; };
 		4DEDC0341943959B00C994E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4DEDC0361943959B00C994E2 /* OneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneTests.m; sourceTree = "<group>"; };
+		4DEDC0361943959B00C994E2 /* OneModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneModelTests.m; sourceTree = "<group>"; };
 		4DEDC0401943BAAC00C994E2 /* ONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONModel.h; sourceTree = "<group>"; };
 		4DEDC0411943BAAC00C994E2 /* ONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONModel.m; sourceTree = "<group>"; };
+		4DEDC0441946220900C994E2 /* ONLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONLayoutViewController.h; sourceTree = "<group>"; };
+		4DEDC0451946220900C994E2 /* ONLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONLayoutViewController.m; sourceTree = "<group>"; };
+		4DEDC0481946224500C994E2 /* ONWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONWelcomeViewController.h; sourceTree = "<group>"; };
+		4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONWelcomeViewController.m; sourceTree = "<group>"; };
+		4DEDC04D19463D8200C994E2 /* UIColor+AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		4DEDC04E19463D8200C994E2 /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
+		4DEDC0511948AD3800C994E2 /* ONNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONNotificationsViewController.h; sourceTree = "<group>"; };
+		4DEDC0521948AD3800C994E2 /* ONNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONNotificationsViewController.m; sourceTree = "<group>"; };
+		4DEDC0551948AD6C00C994E2 /* ONRetakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONRetakeViewController.h; sourceTree = "<group>"; };
+		4DEDC0561948AD6C00C994E2 /* ONRetakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONRetakeViewController.m; sourceTree = "<group>"; };
+		4DEDC0591948AD8200C994E2 /* ONCongratulationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONCongratulationsViewController.h; sourceTree = "<group>"; };
+		4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONCongratulationsViewController.m; sourceTree = "<group>"; };
+		4DEDC05D1948B16000C994E2 /* ONRecipientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONRecipientsViewController.h; sourceTree = "<group>"; };
+		4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONRecipientsViewController.m; sourceTree = "<group>"; };
+		4DEDC0611948B24400C994E2 /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
+		4DEDC0621948B24400C994E2 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		4DEDC0671948B65500C994E2 /* clear-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-72.png"; sourceTree = "<group>"; };
+		4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-white-add.png"; sourceTree = "<group>"; };
+		4DEDC06D1948C25F00C994E2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		4DEDC06F1948C26600C994E2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		4DEDC0711948D54100C994E2 /* ONBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONBackgroundViewController.h; sourceTree = "<group>"; };
+		4DEDC0721948D54100C994E2 /* ONBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONBackgroundViewController.m; sourceTree = "<group>"; };
+		4DEDC075194912B400C994E2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4DEDC077194917CC00C994E2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +115,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDC078194917CC00C994E2 /* MessageUI.framework in Frameworks */,
+				4DEDC076194912B400C994E2 /* MobileCoreServices.framework in Frameworks */,
+				4DEDC0701948C26600C994E2 /* AddressBook.framework in Frameworks */,
+				4DEDC06E1948C25F00C994E2 /* AddressBookUI.framework in Frameworks */,
 				4DEDC00B1943959A00C994E2 /* CoreGraphics.framework in Frameworks */,
 				4DEDC00D1943959B00C994E2 /* UIKit.framework in Frameworks */,
 				4DEDC0091943959A00C994E2 /* Foundation.framework in Frameworks */,
@@ -107,6 +160,10 @@
 		4DEDC0071943959A00C994E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DEDC077194917CC00C994E2 /* MessageUI.framework */,
+				4DEDC075194912B400C994E2 /* MobileCoreServices.framework */,
+				4DEDC06F1948C26600C994E2 /* AddressBook.framework */,
+				4DEDC06D1948C25F00C994E2 /* AddressBookUI.framework */,
 				4DEDC0081943959A00C994E2 /* Foundation.framework */,
 				4DEDC00A1943959A00C994E2 /* CoreGraphics.framework */,
 				4DEDC00C1943959B00C994E2 /* UIKit.framework */,
@@ -118,16 +175,17 @@
 		4DEDC00E1943959B00C994E2 /* One */ = {
 			isa = PBXGroup;
 			children = (
+				4DEDC04C1946225900C994E2 /* View Controllers */,
 				4DEDC0171943959B00C994E2 /* ONAppDelegate.h */,
 				4DEDC0181943959B00C994E2 /* ONAppDelegate.m */,
 				4DEDC01A1943959B00C994E2 /* Main_iPhone.storyboard */,
 				4DEDC01D1943959B00C994E2 /* Main_iPad.storyboard */,
-				4DEDC0201943959B00C994E2 /* ONViewController.h */,
-				4DEDC0211943959B00C994E2 /* ONViewController.m */,
 				4DEDC0231943959B00C994E2 /* Images.xcassets */,
 				4DEDC00F1943959B00C994E2 /* Supporting Files */,
 				4DEDC0401943BAAC00C994E2 /* ONModel.h */,
 				4DEDC0411943BAAC00C994E2 /* ONModel.m */,
+				4DEDC04D19463D8200C994E2 /* UIColor+AppColors.h */,
+				4DEDC04E19463D8200C994E2 /* UIColor+AppColors.m */,
 			);
 			path = One;
 			sourceTree = "<group>";
@@ -135,6 +193,10 @@
 		4DEDC00F1943959B00C994E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */,
+				4DEDC0671948B65500C994E2 /* clear-72.png */,
+				4DEDC0611948B24400C994E2 /* icon-40.png */,
+				4DEDC0621948B24400C994E2 /* icon-72.png */,
 				4DEDC0101943959B00C994E2 /* One-Info.plist */,
 				4DEDC0111943959B00C994E2 /* InfoPlist.strings */,
 				4DEDC0141943959B00C994E2 /* main.m */,
@@ -146,7 +208,7 @@
 		4DEDC0301943959B00C994E2 /* OneTests */ = {
 			isa = PBXGroup;
 			children = (
-				4DEDC0361943959B00C994E2 /* OneTests.m */,
+				4DEDC0361943959B00C994E2 /* OneModelTests.m */,
 				4DEDC0311943959B00C994E2 /* Supporting Files */,
 			);
 			path = OneTests;
@@ -159,6 +221,27 @@
 				4DEDC0331943959B00C994E2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DEDC04C1946225900C994E2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DEDC0441946220900C994E2 /* ONLayoutViewController.h */,
+				4DEDC0451946220900C994E2 /* ONLayoutViewController.m */,
+				4DEDC0481946224500C994E2 /* ONWelcomeViewController.h */,
+				4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */,
+				4DEDC0511948AD3800C994E2 /* ONNotificationsViewController.h */,
+				4DEDC0521948AD3800C994E2 /* ONNotificationsViewController.m */,
+				4DEDC0551948AD6C00C994E2 /* ONRetakeViewController.h */,
+				4DEDC0561948AD6C00C994E2 /* ONRetakeViewController.m */,
+				4DEDC0591948AD8200C994E2 /* ONCongratulationsViewController.h */,
+				4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */,
+				4DEDC05D1948B16000C994E2 /* ONRecipientsViewController.h */,
+				4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */,
+				4DEDC0711948D54100C994E2 /* ONBackgroundViewController.h */,
+				4DEDC0721948D54100C994E2 /* ONBackgroundViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +292,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Jason Schatz";
 				TargetAttributes = {
+					4DEDC0041943959A00C994E2 = {
+						DevelopmentTeam = 73KVPZ9Q3W;
+					};
 					4DEDC0281943959B00C994E2 = {
 						TestTargetID = 4DEDC0041943959A00C994E2;
 					};
@@ -239,9 +325,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DEDC01F1943959B00C994E2 /* Main_iPad.storyboard in Resources */,
+				4DEDC06B1948BAEC00C994E2 /* clear-white-add.png in Resources */,
 				4DEDC0241943959B00C994E2 /* Images.xcassets in Resources */,
 				4DEDC01C1943959B00C994E2 /* Main_iPhone.storyboard in Resources */,
+				4DEDC0681948B65500C994E2 /* clear-72.png in Resources */,
+				4DEDC0631948B24400C994E2 /* icon-40.png in Resources */,
 				4DEDC0131943959B00C994E2 /* InfoPlist.strings in Resources */,
+				4DEDC0651948B24400C994E2 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +339,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDC0691948B65500C994E2 /* clear-72.png in Resources */,
+				4DEDC0641948B24400C994E2 /* icon-40.png in Resources */,
+				4DEDC06C1948BAEC00C994E2 /* clear-white-add.png in Resources */,
 				4DEDC0351943959B00C994E2 /* InfoPlist.strings in Resources */,
+				4DEDC0661948B24400C994E2 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,10 +354,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDC04A1946224500C994E2 /* ONWelcomeViewController.m in Sources */,
+				4DEDC04F19463D8200C994E2 /* UIColor+AppColors.m in Sources */,
 				4DEDC0151943959B00C994E2 /* main.m in Sources */,
+				4DEDC05F1948B16000C994E2 /* ONRecipientsViewController.m in Sources */,
+				4DEDC0571948AD6C00C994E2 /* ONRetakeViewController.m in Sources */,
 				4DEDC0191943959B00C994E2 /* ONAppDelegate.m in Sources */,
+				4DEDC0731948D54100C994E2 /* ONBackgroundViewController.m in Sources */,
 				4DEDC0421943BAAC00C994E2 /* ONModel.m in Sources */,
-				4DEDC0221943959B00C994E2 /* ONViewController.m in Sources */,
+				4DEDC0461946220900C994E2 /* ONLayoutViewController.m in Sources */,
+				4DEDC05B1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */,
+				4DEDC0531948AD3800C994E2 /* ONNotificationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +372,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDC05019463D8200C994E2 /* UIColor+AppColors.m in Sources */,
 				4DEDC0431943BAAC00C994E2 /* ONModel.m in Sources */,
-				4DEDC0371943959B00C994E2 /* OneTests.m in Sources */,
+				4DEDC0601948B16000C994E2 /* ONRecipientsViewController.m in Sources */,
+				4DEDC0541948AD3800C994E2 /* ONNotificationsViewController.m in Sources */,
+				4DEDC0471946220900C994E2 /* ONLayoutViewController.m in Sources */,
+				4DEDC04B1946224500C994E2 /* ONWelcomeViewController.m in Sources */,
+				4DEDC0371943959B00C994E2 /* OneModelTests.m in Sources */,
+				4DEDC0741948D54100C994E2 /* ONBackgroundViewController.m in Sources */,
+				4DEDC0581948AD6C00C994E2 /* ONRetakeViewController.m in Sources */,
+				4DEDC05C1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +508,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "One/One-Prefix.pch";
 				INFOPLIST_FILE = "One/One-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -412,10 +524,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "One/One-Prefix.pch";
 				INFOPLIST_FILE = "One/One-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

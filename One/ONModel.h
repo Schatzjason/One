@@ -8,9 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ONModel : NSObject
+typedef enum : NSUInteger {
+    ONStateNotConfigured,
+    ONStateConfiguredButZero,
+    ONStateConfiguredUpAndRunning
+} ONState;
+
+@interface ONModel : NSObject <NSCoding>
 
 @property (readonly, nonatomic) NSInteger count;
-@property (nonatomic, strong) NSString* recipient;
+@property (nonatomic, strong) NSArray* recipients;
+@property (nonatomic, strong) NSArray* recipientNames;
+@property (nonatomic, assign) ONState state;
+@property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) UIImage *image;
+
++ (instancetype) sharedInstance;
++ (instancetype) dangerousUnarchivedInstance;
+
+- (void) incrementCount;
+- (BOOL) isDoneForToday;
 
 @end

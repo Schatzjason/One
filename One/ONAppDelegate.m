@@ -7,12 +7,40 @@
 //
 
 #import "ONAppDelegate.h"
+#import "ONModel.h"
+#import "ONWelcomeViewController.h"
+#import "ONLayoutViewController.h"
+#import "ONRecipientsViewController.h"
+
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation ONAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // If the recipients have not been configured, show the configuration view
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
+    
+    UIViewController *firstController = [mainStoryboard instantiateViewControllerWithIdentifier: @"NotificationsViewController"];
+    
+    
+//    if (![nil canSendText]) {
+//        firstController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONNOTextViewController"];
+//    }
+
+    UINavigationController* controller = (UINavigationController*) _window.rootViewController;
+    
+    [ONModel sharedInstance].recipientNames = @[@"Jeremy Sullivan"];
+    [ONModel sharedInstance].recipients = @[@"4157222832"];
+    
+    [controller setViewControllers: @[firstController]];
+
+//    [controller setViewControllers: @[recipients]];
+//    if ([ONModel sharedInstance].state == ONStateNotConfigured) {
+//        //_window.rootViewController = [[ONWelcomeViewController alloc] init];
+//    }
+    
     return YES;
 }
 							
