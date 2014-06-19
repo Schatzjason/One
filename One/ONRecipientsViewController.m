@@ -12,9 +12,12 @@
 
 @interface ONRecipientsViewController ()
 - (void) showPickerToSelectNewRecipient;
+- (void) dismissPickerAndDisplayRecipient;
+
 - (NSString*) mobileNumberFromPerson: (ABRecordRef) person;
-- (NSString*) emailFromPerson: (ABRecordRef) person;
 - (NSString*) displayNameFromPerson: (ABRecordRef) person;
+- (NSString*) emailFromPerson: (ABRecordRef) person;
+
 @end
 
 @implementation ONRecipientsViewController
@@ -27,6 +30,35 @@
     self.userNameLabel.alpha = 0.0f;
     self.changeUserButton.alpha = 0.0f;
     self.nextButton.alpha = 0;
+    self.userNameLabel.adjustsFontSizeToFitWidth = YES;
+    
+    self.welcomeLabel.text = @"Welcome!";
+    self.promptLabel.text = @"Who will get the pictures?";
+
+    NSString *nextTitle = @"Next";
+    [self.nextButton setTitle: nextTitle forState: UIControlStateNormal];
+    
+    NSString *changeUserTitle = @"(Click to change)";
+    [self.changeUserButton setTitle: changeUserTitle forState: UIControlStateNormal];
+    
+    // hide the initial views.
+    [self.allViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj setAlpha: 0.0f];
+    }];
+    
+    self.firstTime = YES;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    if (self.firstTime) {
+        [UIView animateWithDuration: 0.6 animations: ^ {
+            [self.allViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [obj setAlpha: 1.0f];
+            }];
+        }];
+        
+        self.firstTime = NO;
+    }
 }
 
 
@@ -46,6 +78,13 @@
     [self.navigationController presentViewController: picker animated: YES completion: nil];
 }
 
+- (void) dismissPickerAndDisplayRecipient {
+    self.welcomeLabel.alpha = 0;
+    self.promptLabel.alpha = 0;
+    
+    [self.navigationController dismissViewControllerAnimated: YES completion: nil];
+}
+
 
 #pragma mark - People Picking
 
@@ -60,16 +99,27 @@
     self.nextButton.alpha = 1.0f;
     
     self.userNameLabel.text = [self displayNameFromPerson: person];
-    self.userNameLabel.textColor = [UIColor yellowColor];
     
     ONModel *model = [ONModel sharedInstance];
     NSString* name = [self displayNameFromPerson: person];
     NSString* number = [self mobileNumberFromPerson: person];
+    NSString* email = [self emailFromPerson: person];
+    
+    NSLog(@"shouldContinueAfterSelectingPerson. name: %@, number: %@, email: %@", name, number, email);
+
+    if (name == nil || (number == nil && email == nil)) {
+        return NO;
+    }
     
     model.recipientNames = @[name];
-    model.recipients = @[number];
     
-    [self.navigationController dismissViewControllerAnimated: YES completion: nil];
+    if (number != nil) {
+        model.recipients = @[number];
+    } else {
+        model.recipients = @[email];
+    }
+    
+    [self performSelectorOnMainThread: @selector(dismissPickerAndDisplayRecipient) withObject: nil waitUntilDone: NO];
     
     return YES;
 }
@@ -126,6 +176,53 @@
     if (last) return last;
     
     return @"(non name)";
+}
+
+- (NSString*) emailFromPerson:(ABRecordRef)person {
+    CFStringRef homeEmail = nil, workEmail = nil, otherEmail = nil, unlabeledEmail = nil;
+    CFStringRef email;
+    CFStringRef emailLabel;
+    
+    ABMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
+    CFIndex emailCount = ABMultiValueGetCount(multi);
+    
+    for(int i = 0; i < emailCount; i++){
+        emailLabel = ABMultiValueCopyLabelAtIndex(multi, i);
+        
+        if (emailLabel == nil) {
+            unlabeledEmail = ABMultiValueCopyValueAtIndex(multi, i);
+            continue;
+        };
+        
+        if(CFStringCompare( emailLabel, kABHomeLabel, 0) == kCFCompareEqualTo) {
+            homeEmail = ABMultiValueCopyValueAtIndex(multi, i);
+        }
+        
+        if(CFStringCompare( emailLabel, kABOtherLabel, 0) == kCFCompareEqualTo) {
+            otherEmail = ABMultiValueCopyValueAtIndex(multi, i);
+        }
+        
+        if(CFStringCompare( emailLabel, kABWorkLabel, 0) == kCFCompareEqualTo) {
+            workEmail = ABMultiValueCopyValueAtIndex(multi, i);
+        }
+
+    }
+    
+    CFRelease(multi);
+    
+    // Establish our preference
+    if (unlabeledEmail != nil) email = unlabeledEmail;
+    else if (homeEmail != nil)  email = homeEmail;
+    else if (otherEmail != nil) email = otherEmail;
+    else if (workEmail != nil)  email = workEmail;
+    
+    else {
+        return nil;
+    }
+
+    NSLog(@"email extraction. home: %@, work: %@, other: %@", homeEmail, otherEmail, workEmail);
+    
+    return (__bridge NSString*) email;
 }
 
 @end

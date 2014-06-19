@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @interface ONAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void) scheduleNotificationStartingTomorrow;
+
++ (UIImagePickerController*) sharedImagePickerController;
++ (MFMessageComposeViewController*) sharedMessageController;
 
 @end

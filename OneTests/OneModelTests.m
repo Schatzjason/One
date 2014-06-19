@@ -35,14 +35,51 @@
     XCTAssert(m1 == m2, @"consistent value");
 }
 
-- (void)testIncrementCount;
-{
+- (void) testFirstPictureTaken {
+    ONModel *m1 = [[ONModel alloc] init];
+    
+    [m1 pictureWasJustTaken];
+    
+    XCTAssertEqual( m1.count,  1, @"first picture taken");
+    
+    [m1 pictureWasJustTaken];
+    
+    XCTAssertEqual( m1.count,  1, @"second picture, same day");
+}
+
+- (void) testStreakBroken {
     ONModel *m1 = [ONModel sharedInstance];
     
-    NSInteger initialCount = m1.count;
-    [m1 incrementCount];
+    [m1 pictureWasJustTaken];
     
-    XCTAssertEqual(initialCount + 1, m1.count);
+    
+    NSInteger originalCount = m1.count;
+    NSInteger secondsPerDay = 60*60*24;
+    
+    NSDate *dPlus1 = [NSDate dateWithTimeIntervalSinceNow: 1 * secondsPerDay];
+    NSDate *dPlus2 = [NSDate dateWithTimeIntervalSinceNow: 2 * secondsPerDay];
+    NSDate *dPlus4 = [NSDate dateWithTimeIntervalSinceNow: 4 * secondsPerDay];
+    
+    [m1 pictureTakenONDate: dPlus1];
+    XCTAssertEqual( m1.count,  originalCount + 1,  @"One day later");
+    XCTAssertTrue(m1.needsCelebration);
+    
+    [m1 pictureTakenONDate: dPlus1];
+    XCTAssertEqual( m1.count,  originalCount + 1,  @"One day later again");
+    XCTAssertFalse(m1.needsCelebration);
+    
+    [m1 pictureTakenONDate: dPlus2];
+    XCTAssertEqual( m1.count,  originalCount + 2,  @"Two days later");
+    XCTAssertTrue(m1.needsCelebration);
+    
+    [m1 pictureTakenONDate: dPlus4];
+    XCTAssertEqual( m1.count,  1,  @"Four day later, streak broken");
+    XCTAssertTrue(m1.needsCelebration);    
+
+    [m1 pictureTakenONDate: dPlus4];
+    XCTAssertEqual( m1.count,  1,  @"Four days later again");
+    XCTAssertFalse(m1.needsCelebration);
+    
 }
 
 - (void)testRecipientsArchived {
@@ -78,6 +115,20 @@
     m1.date = [NSDate date];
     m2 = [ONModel dangerousUnarchivedInstance];
     XCTAssertTrue([m1.date isEqualToDate: m2.date]);
+}
+
+- (void)testNotificationsArchived {
+    ONModel *m1, *m2;
+    
+    m1 = [ONModel dangerousUnarchivedInstance];
+    m1.useNotifications = YES;
+    m2 = [ONModel dangerousUnarchivedInstance];
+    XCTAssertTrue(m2.useNotifications);
+    
+    m1 = [ONModel dangerousUnarchivedInstance];
+    m1.useNotifications = NO;
+    m2 = [ONModel dangerousUnarchivedInstance];
+    XCTAssertFalse(m2.useNotifications);
 }
 
 - (void)testRecipientNamesArchived {

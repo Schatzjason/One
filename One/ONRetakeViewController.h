@@ -10,4 +10,7 @@
 
 @interface ONRetakeViewController : UIViewController
 
+- (IBAction)tapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+
 @end

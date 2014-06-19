@@ -9,9 +9,14 @@
 #import "ONBackgroundViewController.h"
 #import "ONModel.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UIColor+AppColors.h"
+#import "ONAppDelegate.h"
 
 @interface ONBackgroundViewController ()
-- (BOOL) startCameraController;
+- (void) launchCameraController;
+- (void) dismissCameraAndLaunchMessageController;
+- (void) launchMessageController;
+- (void) processMessageComposeResult: (MessageComposeResult) result;
 @end
 
 @implementation ONBackgroundViewController
@@ -21,44 +26,67 @@
 {
     [super viewDidLoad];
     [self.activityIndicator startAnimating];
-    self.firstTime = YES;
+    self.freshStart = YES;
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    if (self.firstTime) {
-        [self performSelector: @selector(startCameraController) withObject: nil afterDelay:0.1];
+    ONModel *model = [ONModel sharedInstance];
+    
+    // If we are returning after a failed message, show the message window again
+    if (model.image && self.freshStart) {
+        [self performSelector: @selector(launchMessageController) withObject: nil afterDelay: 0.1];
     }
     
-    self.firstTime = NO;
+    // Otherwise take a picture
+    else if (self.freshStart) {
+        [self performSelector: @selector(launchCameraController) withObject: nil afterDelay: 0.1];
+    }
+    
+    self.freshStart = NO;
 }
 
-- (BOOL) startCameraController {
-    
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == NO) {
-        NSLog(@"no camera");
-        return NO;
-    }
-    
-    self.pickerController = [[UIImagePickerController alloc] init];
-    self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    self.pickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeCamera];
-    
-    self.pickerController.allowsEditing = NO;
+- (void) launchCameraController {
+    self.pickerController = [ONAppDelegate sharedImagePickerController];
     self.pickerController.delegate = self;
     
-    [self.navigationController presentViewController: self.pickerController animated: YES completion: nil];
-    
-    return YES;
+    [self.navigationController presentViewController: self.pickerController animated: YES completion: ^{
+        // preload the message controller
+        [ONAppDelegate sharedMessageController];
+    }];
 }
+
+- (void) dismissCameraAndLaunchMessageController {
+    [self.pickerController dismissViewControllerAnimated: YES completion: ^ {
+        [self launchMessageController];
+    }];
+}
+
+- (void) launchMessageController {
+    ONModel *model = [ONModel sharedInstance];
+    UIImage *image = model.image;
+    NSData* imageData = UIImageJPEGRepresentation(image, 0.25);
+    
+    self.messageController = [ONAppDelegate sharedMessageController];
+    self.messageController.recipients = model.recipients;
+    self.messageController.messageComposeDelegate = self;
+    [self.messageController addAttachmentData: imageData typeIdentifier: (NSString*) kUTTypeImage filename: @"image.jpg"];
+    
+    [self.navigationController presentViewController: self.messageController animated: YES completion: nil];
+}
+
+
+#pragma mark - Picker Controller Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
+    ONModel *model = [ONModel sharedInstance];
     NSString* mediaType = [info valueForKey: UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString: (NSString*) kUTTypeImage]) {
+        [model pictureWasJustTaken];
         [ONModel sharedInstance].image = [info valueForKey: UIImagePickerControllerOriginalImage];
-        [self performSelectorOnMainThread: @selector(launchMessageController) withObject: nil waitUntilDone: NO];
+        [self performSelectorOnMainThread: @selector(dismissCameraAndLaunchMessageController) withObject: nil waitUntilDone: NO];
     }
     
     else if ([mediaType isEqualToString: (NSString*) kUTTypeMovie]) {
@@ -66,21 +94,60 @@
     }
 }
 
-- (void) launchMessageController {
 
-    [self.pickerController dismissViewControllerAnimated: YES completion: ^ {
-        ONModel *model = [ONModel sharedInstance];
-        UIImage *image = model.image;
-        NSData* imageData = UIImageJPEGRepresentation(image, 0.25);
-        
-        self.messageController = [[MFMessageComposeViewController alloc] init];
-        self.messageController.recipients = model.recipients;
-        BOOL didWork = [self.messageController addAttachmentData: imageData typeIdentifier: (NSString*) kUTTypeImage filename: @"image.jpg"];
-        
-        NSLog(@"attachent worked: %@", didWork ? @"Yes" : @"No");
-        
-        [self.navigationController presentViewController: self.messageController animated: YES completion: nil];
+#pragma mark - Message Compose Delegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [ONModel sharedInstance].image = nil;
+
+    [self.messageController dismissViewControllerAnimated: YES completion: ^ {
+        [self processMessageComposeResult: result];
     }];
 }
 
+- (void) processMessageComposeResult: (MessageComposeResult) result {
+    
+    UIStoryboard *mainStoryboard;
+    UIViewController *congratsController;
+    UIViewController *messageFailedController;
+    
+    if (result == MessageComposeResultSent) {
+        mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
+        congratsController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONCongratulationsViewController"];
+        [self.navigationController pushViewController: congratsController animated: YES];
+        self.freshStart = YES;
+    }
+    
+    else if (result == MessageComposeResultCancelled) {
+        [ONModel sharedInstance].image = nil;
+        [self launchCameraController];
+    }
+    
+    else if (result == MessageComposeResultFailed) {
+
+        // push the congratulations view controller
+        mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
+        messageFailedController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONMessageFailedViewController"];
+        [self.navigationController pushViewController: messageFailedController animated: YES];
+    }
+    
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 @implementation UIColor (AppColors)
 
 + (UIColor*) appDarkColor {
-    return [UIColor colorWithRed:9.0/255.0 green:96.0/255.0 blue:255.0/255.0 alpha:1.0f];
+    return [UIColor colorWithRed:23/255.0 green:105/255.0 blue:107/255.0 alpha:1.0f];
 }
 
 + (UIColor*) appMediumColor {
@@ -19,7 +19,7 @@
 }
 
 + (UIColor*) appLightColor {
-    return [UIColor colorWithRed:55/255.0 green:130/255.0 blue:253/255.0 alpha:1.0f];
+    return [UIColor colorWithRed:13/255.0 green:105/255.0 blue:255/255.0 alpha:1.0f];
 }
 
 @end

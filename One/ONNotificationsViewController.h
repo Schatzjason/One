@@ -12,6 +12,7 @@
 - (IBAction)remindMeButtonClicked:(id)sender;
 - (IBAction)noThanksButtonClicked:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *promptLabel;
 @property (weak, nonatomic) IBOutlet UIButton *remindMeButton;
 @property (weak, nonatomic) IBOutlet UIButton *noThanksButton;
 @property (weak, nonatomic) IBOutlet UIButton *takeFirstPictureButton;

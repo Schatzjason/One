@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0341661951628400814EC0 /* clear-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D0341651951628400814EC0 /* clear-72.png */; };
+		4D034169195247BF00814EC0 /* ONBaloonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D034168195247BF00814EC0 /* ONBaloonView.m */; };
+		4DB24833194A10C50020B363 /* ONMessageFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB24832194A10C50020B363 /* ONMessageFailedViewController.m */; };
+		4DB24836194A65DB0020B363 /* ONGetStartedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB24835194A65DB0020B363 /* ONGetStartedViewController.m */; };
+		4DB24838194A73C90020B363 /* cameraFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB24837194A73C90020B363 /* cameraFrame.png */; };
+		4DB2483A194A821A0020B363 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB24839194A821A0020B363 /* dot.png */; };
+		4DB2483D1950D1DF0020B363 /* OneAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2483C1950D1DF0020B363 /* OneAppDelegateTests.m */; };
 		4DEDC0091943959A00C994E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC0081943959A00C994E2 /* Foundation.framework */; };
 		4DEDC00B1943959A00C994E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC00A1943959A00C994E2 /* CoreGraphics.framework */; };
 		4DEDC00D1943959B00C994E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC00C1943959B00C994E2 /* UIKit.framework */; };
@@ -37,12 +44,6 @@
 		4DEDC05C1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */; };
 		4DEDC05F1948B16000C994E2 /* ONRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */; };
 		4DEDC0601948B16000C994E2 /* ONRecipientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */; };
-		4DEDC0631948B24400C994E2 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0611948B24400C994E2 /* icon-40.png */; };
-		4DEDC0641948B24400C994E2 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0611948B24400C994E2 /* icon-40.png */; };
-		4DEDC0651948B24400C994E2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0621948B24400C994E2 /* icon-72.png */; };
-		4DEDC0661948B24400C994E2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0621948B24400C994E2 /* icon-72.png */; };
-		4DEDC0681948B65500C994E2 /* clear-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0671948B65500C994E2 /* clear-72.png */; };
-		4DEDC0691948B65500C994E2 /* clear-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC0671948B65500C994E2 /* clear-72.png */; };
 		4DEDC06B1948BAEC00C994E2 /* clear-white-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */; };
 		4DEDC06C1948BAEC00C994E2 /* clear-white-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */; };
 		4DEDC06E1948C25F00C994E2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEDC06D1948C25F00C994E2 /* AddressBookUI.framework */; };
@@ -64,6 +65,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D0341651951628400814EC0 /* clear-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-72.png"; sourceTree = "<group>"; };
+		4D034167195247BF00814EC0 /* ONBaloonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONBaloonView.h; sourceTree = "<group>"; };
+		4D034168195247BF00814EC0 /* ONBaloonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONBaloonView.m; sourceTree = "<group>"; };
+		4DB24831194A10C50020B363 /* ONMessageFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONMessageFailedViewController.h; sourceTree = "<group>"; };
+		4DB24832194A10C50020B363 /* ONMessageFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONMessageFailedViewController.m; sourceTree = "<group>"; };
+		4DB24834194A65DB0020B363 /* ONGetStartedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONGetStartedViewController.h; sourceTree = "<group>"; };
+		4DB24835194A65DB0020B363 /* ONGetStartedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONGetStartedViewController.m; sourceTree = "<group>"; };
+		4DB24837194A73C90020B363 /* cameraFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraFrame.png; sourceTree = "<group>"; };
+		4DB24839194A821A0020B363 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
+		4DB2483B1950D1DF0020B363 /* OneAppDelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneAppDelegateTests.h; sourceTree = "<group>"; };
+		4DB2483C1950D1DF0020B363 /* OneAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneAppDelegateTests.m; sourceTree = "<group>"; };
 		4DEDC0051943959A00C994E2 /* One.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = One.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DEDC0081943959A00C994E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DEDC00A1943959A00C994E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,9 +110,6 @@
 		4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONCongratulationsViewController.m; sourceTree = "<group>"; };
 		4DEDC05D1948B16000C994E2 /* ONRecipientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONRecipientsViewController.h; sourceTree = "<group>"; };
 		4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONRecipientsViewController.m; sourceTree = "<group>"; };
-		4DEDC0611948B24400C994E2 /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
-		4DEDC0621948B24400C994E2 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
-		4DEDC0671948B65500C994E2 /* clear-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-72.png"; sourceTree = "<group>"; };
 		4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-white-add.png"; sourceTree = "<group>"; };
 		4DEDC06D1948C25F00C994E2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		4DEDC06F1948C26600C994E2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -178,12 +187,14 @@
 				4DEDC04C1946225900C994E2 /* View Controllers */,
 				4DEDC0171943959B00C994E2 /* ONAppDelegate.h */,
 				4DEDC0181943959B00C994E2 /* ONAppDelegate.m */,
+				4DEDC0401943BAAC00C994E2 /* ONModel.h */,
+				4DEDC0411943BAAC00C994E2 /* ONModel.m */,
+				4D034167195247BF00814EC0 /* ONBaloonView.h */,
+				4D034168195247BF00814EC0 /* ONBaloonView.m */,
 				4DEDC01A1943959B00C994E2 /* Main_iPhone.storyboard */,
 				4DEDC01D1943959B00C994E2 /* Main_iPad.storyboard */,
 				4DEDC0231943959B00C994E2 /* Images.xcassets */,
 				4DEDC00F1943959B00C994E2 /* Supporting Files */,
-				4DEDC0401943BAAC00C994E2 /* ONModel.h */,
-				4DEDC0411943BAAC00C994E2 /* ONModel.m */,
 				4DEDC04D19463D8200C994E2 /* UIColor+AppColors.h */,
 				4DEDC04E19463D8200C994E2 /* UIColor+AppColors.m */,
 			);
@@ -193,10 +204,10 @@
 		4DEDC00F1943959B00C994E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D0341651951628400814EC0 /* clear-72.png */,
+				4DB24839194A821A0020B363 /* dot.png */,
+				4DB24837194A73C90020B363 /* cameraFrame.png */,
 				4DEDC06A1948BAEC00C994E2 /* clear-white-add.png */,
-				4DEDC0671948B65500C994E2 /* clear-72.png */,
-				4DEDC0611948B24400C994E2 /* icon-40.png */,
-				4DEDC0621948B24400C994E2 /* icon-72.png */,
 				4DEDC0101943959B00C994E2 /* One-Info.plist */,
 				4DEDC0111943959B00C994E2 /* InfoPlist.strings */,
 				4DEDC0141943959B00C994E2 /* main.m */,
@@ -208,6 +219,8 @@
 		4DEDC0301943959B00C994E2 /* OneTests */ = {
 			isa = PBXGroup;
 			children = (
+				4DB2483B1950D1DF0020B363 /* OneAppDelegateTests.h */,
+				4DB2483C1950D1DF0020B363 /* OneAppDelegateTests.m */,
 				4DEDC0361943959B00C994E2 /* OneModelTests.m */,
 				4DEDC0311943959B00C994E2 /* Supporting Files */,
 			);
@@ -226,20 +239,24 @@
 		4DEDC04C1946225900C994E2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DEDC0441946220900C994E2 /* ONLayoutViewController.h */,
-				4DEDC0451946220900C994E2 /* ONLayoutViewController.m */,
-				4DEDC0481946224500C994E2 /* ONWelcomeViewController.h */,
-				4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */,
+				4DEDC05D1948B16000C994E2 /* ONRecipientsViewController.h */,
+				4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */,
 				4DEDC0511948AD3800C994E2 /* ONNotificationsViewController.h */,
 				4DEDC0521948AD3800C994E2 /* ONNotificationsViewController.m */,
+				4DB24834194A65DB0020B363 /* ONGetStartedViewController.h */,
+				4DB24835194A65DB0020B363 /* ONGetStartedViewController.m */,
 				4DEDC0551948AD6C00C994E2 /* ONRetakeViewController.h */,
 				4DEDC0561948AD6C00C994E2 /* ONRetakeViewController.m */,
 				4DEDC0591948AD8200C994E2 /* ONCongratulationsViewController.h */,
 				4DEDC05A1948AD8200C994E2 /* ONCongratulationsViewController.m */,
-				4DEDC05D1948B16000C994E2 /* ONRecipientsViewController.h */,
-				4DEDC05E1948B16000C994E2 /* ONRecipientsViewController.m */,
 				4DEDC0711948D54100C994E2 /* ONBackgroundViewController.h */,
 				4DEDC0721948D54100C994E2 /* ONBackgroundViewController.m */,
+				4DB24831194A10C50020B363 /* ONMessageFailedViewController.h */,
+				4DB24832194A10C50020B363 /* ONMessageFailedViewController.m */,
+				4DEDC0481946224500C994E2 /* ONWelcomeViewController.h */,
+				4DEDC0491946224500C994E2 /* ONWelcomeViewController.m */,
+				4DEDC0441946220900C994E2 /* ONLayoutViewController.h */,
+				4DEDC0451946220900C994E2 /* ONLayoutViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -326,12 +343,12 @@
 			files = (
 				4DEDC01F1943959B00C994E2 /* Main_iPad.storyboard in Resources */,
 				4DEDC06B1948BAEC00C994E2 /* clear-white-add.png in Resources */,
+				4DB24838194A73C90020B363 /* cameraFrame.png in Resources */,
+				4DB2483A194A821A0020B363 /* dot.png in Resources */,
+				4D0341661951628400814EC0 /* clear-72.png in Resources */,
 				4DEDC0241943959B00C994E2 /* Images.xcassets in Resources */,
 				4DEDC01C1943959B00C994E2 /* Main_iPhone.storyboard in Resources */,
-				4DEDC0681948B65500C994E2 /* clear-72.png in Resources */,
-				4DEDC0631948B24400C994E2 /* icon-40.png in Resources */,
 				4DEDC0131943959B00C994E2 /* InfoPlist.strings in Resources */,
-				4DEDC0651948B24400C994E2 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,11 +356,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DEDC0691948B65500C994E2 /* clear-72.png in Resources */,
-				4DEDC0641948B24400C994E2 /* icon-40.png in Resources */,
 				4DEDC06C1948BAEC00C994E2 /* clear-white-add.png in Resources */,
 				4DEDC0351943959B00C994E2 /* InfoPlist.strings in Resources */,
-				4DEDC0661948B24400C994E2 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +368,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB24836194A65DB0020B363 /* ONGetStartedViewController.m in Sources */,
+				4DB24833194A10C50020B363 /* ONMessageFailedViewController.m in Sources */,
+				4D034169195247BF00814EC0 /* ONBaloonView.m in Sources */,
 				4DEDC04A1946224500C994E2 /* ONWelcomeViewController.m in Sources */,
 				4DEDC04F19463D8200C994E2 /* UIColor+AppColors.m in Sources */,
 				4DEDC0151943959B00C994E2 /* main.m in Sources */,
@@ -382,6 +399,7 @@
 				4DEDC0741948D54100C994E2 /* ONBackgroundViewController.m in Sources */,
 				4DEDC0581948AD6C00C994E2 /* ONRetakeViewController.m in Sources */,
 				4DEDC05C1948AD8200C994E2 /* ONCongratulationsViewController.m in Sources */,
+				4DB2483D1950D1DF0020B363 /* OneAppDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +612,7 @@
 				4DEDC03C1943959B00C994E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DEDC03D1943959B00C994E2 /* Build configuration list for PBXNativeTarget "OneTests" */ = {
 			isa = XCConfigurationList;
@@ -602,6 +621,7 @@
 				4DEDC03F1943959B00C994E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

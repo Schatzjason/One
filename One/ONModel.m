@@ -14,6 +14,7 @@
 #define kCountKey @"ONModelCount"
 #define kStateKey @"ONModelState"
 #define kDateKey @"ONModelDate"
+#define kNotificationsKey @"ONNotificationsKey"
 
 @interface ONModel (Private)
 + (NSString*) documentPath;
@@ -49,6 +50,7 @@
         self.recipientNames = @[];
         self.date = nil;
         _count = 0;
+        _highestCount = 0;
         self.state = ONStateNotConfigured;
     }
     
@@ -78,6 +80,10 @@
     [self archive];
 }
 
+- (void) setUseNotifications:(BOOL) value {
+    _useNotifications = value;
+    [self archive];
+}
 
 #pragma mark - Working methods
 
@@ -101,6 +107,73 @@
     return  [today day]   == [lastPictureDate day] &&
             [today month] == [lastPictureDate month] &&
             [today year]  == [lastPictureDate year];
+}
+
+- (void) pictureWasJustTaken {
+    [self pictureTakenONDate: [NSDate date]];
+}
+
+- (void) pictureTakenONDate: (NSDate*) date {
+
+    // first picture
+    if (self.date == nil) {
+        _count = 1;
+        _highestCount = 1;
+        _needsCelebration = YES;
+        _date = date;
+        [self archive];
+        return;
+    }
+    
+    NSInteger daysSinceLastPicture = [ONModel daysFromDate: _date toDate: date];
+    
+    switch (daysSinceLastPicture) {
+        case 0:
+            // Second picture of day
+            self.needsCelebration = NO;
+            break;
+        case 1:
+            // streak continues
+            _count++;
+            self.needsCelebration = YES;
+            break;
+            
+        default:
+            // streak broken
+            _count = 1;
+            self.needsCelebration = YES;
+            
+    }
+    
+    // Check for updateding highest
+    if (_count > _highestCount) {
+        _highestCount = _count;
+    }
+    
+    _date = date;
+    [self archive];
+}
+
++ (BOOL) date: (NSDate*) d1 isADayBeforeDate: (NSDate*) d2 {
+    return [ONModel daysFromDate: d1 toDate: d2] == 1;
+}
+
++ (NSInteger) daysFromDate: (NSDate*) d1 toDate: (NSDate*) d2 {
+    NSDate *d1Day;
+    NSDate *d2Day;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&d1Day
+                 interval:NULL forDate: d1];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&d2Day
+                 interval:NULL forDate: d2];
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:d1Day toDate:d2Day options:0];
+    
+    return [difference day];
 }
 
 #pragma mark - Archiving
@@ -130,6 +203,7 @@
         self.recipients = [aDecoder decodeObjectForKey: kRecipientsKey];
         self.recipientNames = [aDecoder decodeObjectForKey: kRecipientsNamesKey];
         self.date = [aDecoder decodeObjectForKey: kDateKey];
+        self.useNotifications = [aDecoder decodeBoolForKey: kNotificationsKey];
     }
     
     return self;
@@ -141,6 +215,7 @@
     [aCoder encodeObject: self.recipients forKey:kRecipientsKey];
     [aCoder encodeObject: self.recipientNames forKey: kRecipientsNamesKey];
     [aCoder encodeObject: self.date forKey: kDateKey];
+    [aCoder encodeBool: self.useNotifications forKey:kNotificationsKey];
 }
 
 @end

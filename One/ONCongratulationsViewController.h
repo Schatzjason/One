@@ -10,7 +10,23 @@
 
 @interface ONCongratulationsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *oldCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *newCountLabel;
+@property (nonatomic, assign) CGRect aboveRect;
+@property (nonatomic, assign) CGRect centeredRect;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
+
+@property (weak, nonatomic) IBOutlet UILabel *recordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tinyRecordLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *numberAboveLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberCenteredLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberBelowLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *middleShieldView;
+@property (weak, nonatomic) IBOutlet UIView *topShieldView;
+@property (weak, nonatomic) IBOutlet UIView *bottomShieldView;
+
+- (IBAction)tappedForAnotherPicture:(id)sender;
+
+@property (nonatomic, strong) NSArray *baloons;
 
 @end

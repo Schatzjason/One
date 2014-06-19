@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-@interface ONBackgroundViewController : UIViewController  <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ONBackgroundViewController : UIViewController  <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) UIImagePickerController* pickerController;
 @property (strong, nonatomic) MFMessageComposeViewController* messageController;
-@property (nonatomic, assign) BOOL firstTime;
+@property (nonatomic, assign) BOOL freshStart;
 
 @end
