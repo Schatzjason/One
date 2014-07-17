@@ -27,8 +27,12 @@
 
 - (IBAction)buttonClicked:(id)sender {
     [ONModel sharedInstance].state = ONStateConfiguredUpAndRunning;
-    
-    [self.navigationController popToRootViewControllerAnimated: YES];
+
+    [UIView animateWithDuration: 0.5 animations:^{
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.navigationController popToRootViewControllerAnimated: YES];
+    }];
 }
 
 @end

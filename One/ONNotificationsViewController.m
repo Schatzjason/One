@@ -36,14 +36,23 @@
     model.useNotifications = YES;
     [delegate scheduleNotificationStartingTomorrow];
     
-    [self transition];
+    [UIView animateWithDuration: 0.1 animations: ^{
+        self.noThanksButton.alpha = 0;
+    }completion:^(BOOL finished) {
+        [self transition];
+    }];
 }
 
 - (IBAction)noThanksButtonClicked:(id)sender {
     ONModel *model = [ONModel sharedInstance];
     model.useNotifications = NO;
     
-    [self transition];
+    [UIView animateWithDuration: 0.1 animations: ^{
+        self.remindMeButton.alpha = 0;
+    }completion:^(BOOL finished) {
+        [self transition];
+    }];
+    
 }
 
 - (void) transition {

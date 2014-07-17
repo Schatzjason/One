@@ -16,6 +16,7 @@
 - (void) scheduleNotificationStartingTomorrow;
 
 + (UIImagePickerController*) sharedImagePickerController;
-+ (MFMessageComposeViewController*) sharedMessageController;
++ (MFMessageComposeViewController*) cachedMessageViewController;
++ (void) clearCachedMessageViewController;
 
 @end

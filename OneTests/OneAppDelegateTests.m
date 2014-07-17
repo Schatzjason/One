@@ -8,6 +8,7 @@
 
 #import "OneAppDelegateTests.h"
 #import "ONAppDelegate.h"
+#import "ONModel.h"
 
 
 @implementation OneAppDelegateTests

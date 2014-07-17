@@ -9,15 +9,11 @@
 #import "ONRecipientsViewController.h"
 #import "UIColor+AppColors.h"
 #import "ONModel.h"
+#import "ONManageRecipientsViewController.h"
 
 @interface ONRecipientsViewController ()
 - (void) showPickerToSelectNewRecipient;
-- (void) dismissPickerAndDisplayRecipient;
-
-- (NSString*) mobileNumberFromPerson: (ABRecordRef) person;
-- (NSString*) displayNameFromPerson: (ABRecordRef) person;
-- (NSString*) emailFromPerson: (ABRecordRef) person;
-
+- (void) setAlphas;
 @end
 
 @implementation ONRecipientsViewController
@@ -25,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor appLightColor];
+    self.view.backgroundColor = [UIColor blackColor];
     self.userImageView.alpha = 0.0f;
     self.userNameLabel.alpha = 0.0f;
     self.changeUserButton.alpha = 0.0f;
@@ -49,6 +45,24 @@
     self.firstTime = YES;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    
+    ONModel *model = [ONModel sharedInstance];
+    
+    [self setAlphas];
+    
+    if (model.recipientNames.count == 1) {
+        self.userNameLabel.text = [model.recipientNames firstObject];
+    } else if (model.recipientNames.count > 1) {
+        self.userNameLabel.text = [NSString stringWithFormat: @"%@, ...", [model.recipientNames firstObject]];
+    } else {
+        self.userNameLabel.text = @"";
+    }
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void) viewDidAppear:(BOOL)animated {
     if (self.firstTime) {
         [UIView animateWithDuration: 0.6 animations: ^ {
@@ -62,6 +76,27 @@
 }
 
 
+#pragma mark - helpers
+
+- (void) setAlphas {
+    ONState state = [ONModel sharedInstance].state;
+    CGFloat recipientChooserAlpha = (state == ONStateNotConfigured) ? 1.0f : 0.0f;
+    CGFloat moveOnAlpha = 1.0f - recipientChooserAlpha;
+    
+    // Ready to move on
+    self.nextButton.alpha = moveOnAlpha;
+    self.userNameLabel.alpha = moveOnAlpha;
+    self.changeUserButton.alpha = moveOnAlpha;
+    
+    // Should set the recipients
+    self.addReciepientsButton.alpha = recipientChooserAlpha;
+    self.promptLabel.alpha = recipientChooserAlpha;
+    self.welcomeLabel.alpha = recipientChooserAlpha;
+}
+
+
+#pragma mark - IBActions
+
 - (IBAction)recipientsButtonClicked:(id)sender {
     [self showPickerToSelectNewRecipient];
 }
@@ -70,159 +105,18 @@
     [self showPickerToSelectNewRecipient];
 }
 
+- (IBAction)nextButtonClicked:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle: nil];
+    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier: @"ONGetStartedViewController"];
+    
+    [self.navigationController pushViewController: controller animated: YES];
+}
+
 - (void) showPickerToSelectNewRecipient {
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle: nil];
+    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier: @"ONManageRecipientsViewController"];
     
-    picker.peoplePickerDelegate = self;
-    
-    [self.navigationController presentViewController: picker animated: YES completion: nil];
-}
-
-- (void) dismissPickerAndDisplayRecipient {
-    self.welcomeLabel.alpha = 0;
-    self.promptLabel.alpha = 0;
-    
-    [self.navigationController dismissViewControllerAnimated: YES completion: nil];
-}
-
-
-#pragma mark - People Picking
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
-    
-    NSLog(@"picked: %@", person);
-    
-    self.addReciepientsButton.alpha = 0.0f;
-    self.userImageView.alpha = 1.0f;
-    self.userNameLabel.alpha = 1.0f;
-    self.changeUserButton.alpha = 1.0f;
-    self.nextButton.alpha = 1.0f;
-    
-    self.userNameLabel.text = [self displayNameFromPerson: person];
-    
-    ONModel *model = [ONModel sharedInstance];
-    NSString* name = [self displayNameFromPerson: person];
-    NSString* number = [self mobileNumberFromPerson: person];
-    NSString* email = [self emailFromPerson: person];
-    
-    NSLog(@"shouldContinueAfterSelectingPerson. name: %@, number: %@, email: %@", name, number, email);
-
-    if (name == nil || (number == nil && email == nil)) {
-        return NO;
-    }
-    
-    model.recipientNames = @[name];
-    
-    if (number != nil) {
-        model.recipients = @[number];
-    } else {
-        model.recipients = @[email];
-    }
-    
-    [self performSelectorOnMainThread: @selector(dismissPickerAndDisplayRecipient) withObject: nil waitUntilDone: NO];
-    
-    return YES;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
-    
-    NSLog(@"picked: %@ : %d", person, property);
-    return YES;
-}
-
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
-    NSLog(@"canceled");
-}
-
-
-#pragma mark - ABReferenceRef Helpers
-
-- (NSString*) mobileNumberFromPerson: (ABRecordRef) person {
-    
-    ABMultiValueRef phones = (ABMultiValueRef) ABRecordCopyValue(person, kABPersonPhoneProperty);
-    NSString* mobile = nil;
-    NSString* mobileLabel;
-    NSInteger mobileIndex = -1;
-    NSInteger count = ABMultiValueGetCount(phones);
-    
-    for (int i=0; i < count; i++) {
-        
-        mobileLabel = (__bridge_transfer NSString*)ABMultiValueCopyLabelAtIndex(phones, i);
-        
-        if ([mobileLabel isEqualToString:(NSString *)kABPersonPhoneMobileLabel] || [mobileLabel isEqualToString:(NSString*)kABPersonPhoneIPhoneLabel]) {
-            mobileIndex = i;
-        }
-    }
-    
-    if (mobileIndex >= 0) {
-        mobile = (__bridge_transfer NSString*) ABMultiValueCopyValueAtIndex(phones, mobileIndex);
-    }
-    
-    return mobile;
-}
-
-- (NSString*) displayNameFromPerson: (ABRecordRef) person {
-    NSString *first;
-    NSString *last;
-    
-    first = (__bridge_transfer NSString*) ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    last = (__bridge_transfer NSString*) ABRecordCopyValue( person, kABPersonLastNameProperty);
-    
-    if (first && last) {
-        return [NSString stringWithFormat: @"%@ %@", first, last];
-    }
-    
-    if (first) return first;
-    if (last) return last;
-    
-    return @"(non name)";
-}
-
-- (NSString*) emailFromPerson:(ABRecordRef)person {
-    CFStringRef homeEmail = nil, workEmail = nil, otherEmail = nil, unlabeledEmail = nil;
-    CFStringRef email;
-    CFStringRef emailLabel;
-    
-    ABMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
-    CFIndex emailCount = ABMultiValueGetCount(multi);
-    
-    for(int i = 0; i < emailCount; i++){
-        emailLabel = ABMultiValueCopyLabelAtIndex(multi, i);
-        
-        if (emailLabel == nil) {
-            unlabeledEmail = ABMultiValueCopyValueAtIndex(multi, i);
-            continue;
-        };
-        
-        if(CFStringCompare( emailLabel, kABHomeLabel, 0) == kCFCompareEqualTo) {
-            homeEmail = ABMultiValueCopyValueAtIndex(multi, i);
-        }
-        
-        if(CFStringCompare( emailLabel, kABOtherLabel, 0) == kCFCompareEqualTo) {
-            otherEmail = ABMultiValueCopyValueAtIndex(multi, i);
-        }
-        
-        if(CFStringCompare( emailLabel, kABWorkLabel, 0) == kCFCompareEqualTo) {
-            workEmail = ABMultiValueCopyValueAtIndex(multi, i);
-        }
-
-    }
-    
-    CFRelease(multi);
-    
-    // Establish our preference
-    if (unlabeledEmail != nil) email = unlabeledEmail;
-    else if (homeEmail != nil)  email = homeEmail;
-    else if (otherEmail != nil) email = otherEmail;
-    else if (workEmail != nil)  email = workEmail;
-    
-    else {
-        return nil;
-    }
-
-    NSLog(@"email extraction. home: %@, work: %@, other: %@", homeEmail, otherEmail, workEmail);
-    
-    return (__bridge NSString*) email;
+    [self.navigationController pushViewController: controller animated: YES];
 }
 
 @end

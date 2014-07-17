@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AddressBookUI/AddressBookUI.h>
-#import <AddressBook/AddressBook.h>
 
-@interface ONRecipientsViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate>
+@interface ONRecipientsViewController : UIViewController
 
 @property (nonatomic, assign) BOOL firstTime;
 
@@ -25,6 +23,7 @@
 
 - (IBAction)recipientsButtonClicked:(id)sender;
 - (IBAction)changeUserButtonClicked:(id)sender;
+- (IBAction)nextButtonClicked:(id)sender;
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *allViews;
 @end

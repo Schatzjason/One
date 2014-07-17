@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ONRecord.h"
+#import <AddressBook/AddressBook.h>
 
 typedef enum : NSUInteger {
     ONStateNotConfigured,
@@ -17,14 +19,19 @@ typedef enum : NSUInteger {
 @interface ONModel : NSObject <NSCoding>
 
 @property (readonly, nonatomic) NSInteger count;
+@property (readonly, nonatomic) NSInteger previousCount;
 @property (readonly, nonatomic) NSInteger highestCount;
 
-@property (nonatomic, strong) NSArray* recipients;
-@property (nonatomic, strong) NSArray* recipientNames;
+@property (nonatomic, readonly) NSArray* recipients;
+@property (nonatomic, readonly) NSArray* recipientNames;
 @property (nonatomic, assign) ONState state;
 @property (nonatomic, strong) NSDate* date;
 @property (nonatomic, assign) BOOL useNotifications;
 @property (nonatomic, assign) BOOL needsCelebration;
+@property (nonatomic, readonly) NSArray *records;
+@property (nonatomic, strong) NSString *phrase;
+@property (nonatomic, strong) NSString *recipientNickname;
+@property (nonatomic, assign) NSInteger cameraDevice;
 
 @property (nonatomic, strong) UIImage *image;
 
@@ -35,6 +42,20 @@ typedef enum : NSUInteger {
 
 - (BOOL) isDoneForToday;
 - (void) pictureWasJustTaken;
-- (void) pictureTakenONDate: (NSDate*) date;
+- (void) pictureTakenOnDate: (NSDate*) date;
+- (void) addRecord: (ONRecord*) record;
+
+- (void) addTestRecords;
+
+// Used when the user picks a new person with ManageRecipientsTableViewController
+- (BOOL) addRecipient: (NSString*) recipient withName: (NSString*) name;
+- (void) removeRecipient: (NSString*) recipient withName: (NSString*) name;
+
+#pragma mark - ABReferenceRef Helpers
+
++ (NSString*) mobileNumberFromPerson: (ABRecordRef) person;
++ (NSString*) displayNameFromPerson: (ABRecordRef) person;
++ (NSString*) emailFromPerson:(ABRecordRef)person;
+
 
 @end

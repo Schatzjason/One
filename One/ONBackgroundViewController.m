@@ -11,16 +11,18 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UIColor+AppColors.h"
 #import "ONAppDelegate.h"
+#import "ONCongratulationsViewController.h"
 
 @interface ONBackgroundViewController ()
 - (void) launchCameraController;
 - (void) dismissCameraAndLaunchMessageController;
 - (void) launchMessageController;
 - (void) processMessageComposeResult: (MessageComposeResult) result;
+- (void) loadMessageControllerinBackground;
+- (void) transitionToCongratulationsViewController;
 @end
 
 @implementation ONBackgroundViewController
-
 
 - (void)viewDidLoad
 {
@@ -46,14 +48,20 @@
     self.freshStart = NO;
 }
 
+
+#pragma mark - View Controllers
+
+- (void) loadMessageControllerinBackground {
+    [ONAppDelegate cachedMessageViewController];
+}
+
 - (void) launchCameraController {
     self.pickerController = [ONAppDelegate sharedImagePickerController];
     self.pickerController.delegate = self;
     
-    [self.navigationController presentViewController: self.pickerController animated: YES completion: ^{
-        // preload the message controller
-        [ONAppDelegate sharedMessageController];
-    }];
+    [self.navigationController presentViewController: self.pickerController animated: YES completion: ^{}];
+    
+    [self performSelectorInBackground: @selector(loadMessageControllerinBackground) withObject: self];
 }
 
 - (void) dismissCameraAndLaunchMessageController {
@@ -66,11 +74,14 @@
     ONModel *model = [ONModel sharedInstance];
     UIImage *image = model.image;
     NSData* imageData = UIImageJPEGRepresentation(image, 0.25);
+
+    self.messageController = [ONAppDelegate cachedMessageViewController];
     
-    self.messageController = [ONAppDelegate sharedMessageController];
     self.messageController.recipients = model.recipients;
     self.messageController.messageComposeDelegate = self;
     [self.messageController addAttachmentData: imageData typeIdentifier: (NSString*) kUTTypeImage filename: @"image.jpg"];
+    
+    self.messageController.body = [NSString stringWithFormat: @"%@ Day %ld", model.phrase, (long) model.count];
     
     [self.navigationController presentViewController: self.messageController animated: YES completion: nil];
 }
@@ -83,6 +94,9 @@
     ONModel *model = [ONModel sharedInstance];
     NSString* mediaType = [info valueForKey: UIImagePickerControllerMediaType];
     
+    // Remember the camera that was used
+    model.cameraDevice = picker.cameraDevice;
+    
     if ([mediaType isEqualToString: (NSString*) kUTTypeImage]) {
         [model pictureWasJustTaken];
         [ONModel sharedInstance].image = [info valueForKey: UIImagePickerControllerOriginalImage];
@@ -94,10 +108,24 @@
     }
 }
 
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self.pickerController dismissViewControllerAnimated: YES completion:^{
+        UIStoryboard *mainStoryboard;
+        ONCongratulationsViewController *congratsController;
+        
+        mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
+        congratsController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONCongratulationsViewController"];
+        congratsController.celebrationIsCanceled = YES;
+        
+        [self.navigationController pushViewController: congratsController animated: YES];
+        self.freshStart = YES;
+    }];
+}
 
 #pragma mark - Message Compose Delegate
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [ONAppDelegate clearCachedMessageViewController];
     [ONModel sharedInstance].image = nil;
 
     [self.messageController dismissViewControllerAnimated: YES completion: ^ {
@@ -107,15 +135,14 @@
 
 - (void) processMessageComposeResult: (MessageComposeResult) result {
     
+    [ONAppDelegate clearCachedMessageViewController];
+    
     UIStoryboard *mainStoryboard;
-    UIViewController *congratsController;
     UIViewController *messageFailedController;
     
     if (result == MessageComposeResultSent) {
-        mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
-        congratsController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONCongratulationsViewController"];
-        [self.navigationController pushViewController: congratsController animated: YES];
         self.freshStart = YES;
+        [self performSelectorOnMainThread: @selector(transitionToCongratulationsViewController) withObject: nil waitUntilDone: NO];
     }
     
     else if (result == MessageComposeResultCancelled) {
@@ -131,6 +158,14 @@
         [self.navigationController pushViewController: messageFailedController animated: YES];
     }
     
+}
+
+#pragma mark - Helper
+
+- (void) transitionToCongratulationsViewController {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName: @"Main_iPhone" bundle:nil];
+    UIViewController *congratsController = [mainStoryboard instantiateViewControllerWithIdentifier: @"ONCongratulationsViewController"];
+    [self.navigationController pushViewController: congratsController animated: YES];
 }
 
 @end

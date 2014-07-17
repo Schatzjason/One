@@ -10,22 +10,23 @@
 
 @interface ONCongratulationsViewController : UIViewController
 
+@property (nonatomic, assign) BOOL celebrationIsCanceled;
 @property (nonatomic, assign) CGRect aboveRect;
 @property (nonatomic, assign) CGRect centeredRect;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
-
-@property (weak, nonatomic) IBOutlet UILabel *recordLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tinyRecordLabel;
+@property (nonatomic, assign) CGRect belowRect;
 
 @property (weak, nonatomic) IBOutlet UILabel *numberAboveLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberCenteredLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberBelowLabel;
-
 @property (weak, nonatomic) IBOutlet UIView *middleShieldView;
 @property (weak, nonatomic) IBOutlet UIView *topShieldView;
 @property (weak, nonatomic) IBOutlet UIView *bottomShieldView;
+@property (weak, nonatomic) IBOutlet UIImageView *cameraFrame;
 
-- (IBAction)tappedForAnotherPicture:(id)sender;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *navBarItems;
+
+- (IBAction)logViewButtonTapped:(id)sender;
+- (IBAction)backButtonTapped:(id)sender;
 
 @property (nonatomic, strong) NSArray *baloons;
 
